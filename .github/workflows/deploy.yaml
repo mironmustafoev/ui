@@ -1,0 +1,21 @@
+name: Build & Deploy
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Prounity site
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+
+          script: |
+            cd /var/www/html/ui
+            rm -rf ui
+            git clone https://github.com/prounitycompany/ui.git
