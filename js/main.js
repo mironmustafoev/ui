@@ -96,3 +96,7 @@
     
 })(jQuery);
 
+function openPDF() {
+  window.open('./img/albom.pdf');
+}
+
